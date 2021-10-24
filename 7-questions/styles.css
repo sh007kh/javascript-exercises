@@ -3,7 +3,7 @@
 Fonts
 ===============
 */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Roboto:wght@400;700&display=swap");
 
 /*
 =============== 
@@ -46,6 +46,7 @@ Variables
   --clr-black: #222;
   --ff-primary: "Roboto", sans-serif;
   --ff-secondary: "Open Sans", sans-serif;
+  --ff-third: "Great Vibes", cursive;
   --transition: all 0.3s linear;
   --spacing: 0.25rem;
   --radius: 0.5rem;
@@ -181,3 +182,71 @@ main {
 Questions
 ===============
 */
+.section-title {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+.s-title {
+  font-family: var(--ff-third);
+  color: var(--clr-gold);
+}
+.question {
+  background-color: var(--clr-white);
+  max-width: var(--fixed-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1.5rem 0 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--light-shadow);
+}
+.question-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding-bottom: 1rem; */
+}
+.question-title p {
+  color: var(--clr-black);
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  padding-bottom: 1.5rem;
+  margin-bottom: 0;
+}
+.question-text {
+  padding: 1rem 0 1.5rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.question-text p {
+  margin-bottom: 0;
+}
+.question-btn {
+  border: transparent;
+  background-color: transparent;
+  transition: var(--transition);
+}
+.question-btn:hover {
+  transform: scale(2);
+  transform: rotate(90deg);
+}
+.question-btn {
+  font-size: 1.5rem;
+  color: var(--clr-gold);
+  cursor: pointer;
+}
+.question-text {
+  display: none;
+}
+.show-text .question-text {
+  display: block;
+}
+.minus-btn {
+  display: none;
+}
+.show-text .minus-btn {
+  display: inline;
+}
+.show-text .plus-btn {
+  display: none;
+}
