@@ -71,42 +71,35 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "bison steak",
+    category: "dinner",
+    price: 22.99,
+    img: "./images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
 ];
 
 const sectionCenter = document.querySelector(".section-center");
+const container = document.querySelector(".btn-container");
 
 // window loaded
 window.addEventListener("DOMContentLoaded", function () {
-  displayMenuItem(menu);
-});
-
-// filter btn
-filterBtns = document.querySelectorAll(".filter-btn");
-
-filterBtns.forEach(function (btn) {
-  btn.addEventListener("click", function (e) {
-    const category = e.currentTarget.dataset.id;
-    const menuCategory = menu.filter(function (menuItem) {
-      if (menuItem.category === category) {
-        return menuItem;
-      }
-    });
-    if (category === "all") {
-      displayMenuItem(menu);
-    } else displayMenuItem(menuCategory);
-  });
+  diplayMenuItems(menu);
+  displayMenuIButtons();
 });
 
 // display menu loaded
-function displayMenuItem(menuItem) {
-  let displayMenu = menuItem.map(function (item) {
+function diplayMenuItems(menuItems) {
+  let displayMenu = menuItems.map(function (item) {
     return `<article class="menu-item">
-          <img src="${item.img}" alt="${item.title}" class="item-img" />
+          <img src=${item.img} alt=${item.title} class="photo" />
           <div class="item-info">
-            <div class="item-header">
+            <header>
               <h4>${item.title}</h4>
-              <h4 class="item-price">$${item.price}</h4>
-            </div>
+              <h4 class="price">$${item.price}</h4>
+            </header>
             <p class="item-text">
               ${item.desc}
             </p>
@@ -115,4 +108,38 @@ function displayMenuItem(menuItem) {
   });
   displayMenu = displayMenu.join("");
   sectionCenter.innerHTML = displayMenu;
+}
+// display buttons
+function displayMenuIButtons() {
+  let categories = menu.reduce(
+    function (values, item) {
+      if (!values.includes(item.category)) {
+        values.push(item.category);
+      }
+      return values;
+    },
+    ["all"]
+  );
+  let displayBtn = categories.map(function (category) {
+    return `<button type="button" class="btn filter-btn" data-id="${category}">${category}</button>`;
+  });
+  displayBtn = displayBtn.join("");
+  container.innerHTML = displayBtn;
+
+  filterBtns = container.querySelectorAll(".filter-btn");
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      const category = e.currentTarget.dataset.id;
+      const menuCategory = menu.filter(function (menuItem) {
+        if (menuItem.category === category) {
+          return menuItem;
+        }
+      });
+      if (category === "all") {
+        diplayMenuItems(menu);
+      } else {
+        diplayMenuItems(menuCategory);
+      }
+    });
+  });
 }
