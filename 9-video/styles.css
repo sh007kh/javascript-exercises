@@ -146,15 +146,12 @@ p {
   display: inline-block;
   transition: var(--transition);
   font-size: 0.875rem;
-  border: 2px solid var(--clr-black);
+  /* border: none; */
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
+  outline: none;
 }
-.btn:hover {
-  color: var(--clr-white);
-  background: var(--clr-black);
-}
+
 /* section */
 .section {
   padding: 5rem 0;
@@ -180,3 +177,63 @@ main {
 Video
 ===============
 */
+.header {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
+.header h1 {
+  color: var(--clr-white);
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -2;
+  /* opacity: 0.5; */
+}
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--clr-white);
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.preloader img {
+  width: 10rem;
+}
+.visible {
+  visibility: hidden;
+}
+.switch-btn {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  background-color: var(--clr-white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.switch {
+  background-color: var(--clr-primary-3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  border-radius: var(--radius);
+  /* z-index: 4; */
+  transition: var(--transition);
+}
+.slide {
+  transform: translateX(4.5rem);
+}
