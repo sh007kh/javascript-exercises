@@ -146,8 +146,6 @@ p {
   display: inline-block;
   transition: var(--transition);
   font-size: 0.875rem;
-  /* border: none; */
-  cursor: pointer;
   border-radius: var(--radius);
   outline: none;
 }
@@ -196,7 +194,6 @@ Video
   width: 100%;
   object-fit: cover;
   z-index: -2;
-  /* opacity: 0.5; */
 }
 .preloader {
   position: fixed;
@@ -219,21 +216,42 @@ Video
   position: absolute;
   bottom: 2rem;
   left: 2rem;
-  background-color: var(--clr-white);
+  height: 2rem;
+  width: 7rem;
+  background-color: var(--clr-primary-5);
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 .switch {
-  background-color: var(--clr-primary-3);
+  background-color: var(--clr-grey-10);
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 50%;
   border-radius: var(--radius);
-  /* z-index: 4; */
   transition: var(--transition);
-}
-.slide {
   transform: translateX(4.5rem);
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: capitalize;
+  font-family: var(--ff-secondary);
+  color: var(--clr-grey-1);
+  border: none;
+}
+
+.switch:hover {
+  color: var(--clr-primary-3);
+  background-color: var(--clr-white);
+}
+
+.play-switch {
+  visibility: hidden;
+}
+.show-text .play-switch {
+  visibility: visible;
+  transform: translateX(0);
+}
+.show-text .pause-switch {
+  display: none;
 }
