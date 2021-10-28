@@ -9,13 +9,17 @@ window.addEventListener("load", function () {
 });
 
 const switchBtn = document.querySelector(".switch-btn");
-const switchSlide = document.querySelector(".switch");
-switchBtn.addEventListener("click", function () {
-  if (!switchSlide.classList.contains("slide")) {
-    switchSlide.classList.add("slide");
-    video.pause();
-  } else {
-    switchSlide.classList.remove("slide");
-    video.play();
-  }
+
+const btns = document.querySelectorAll(".switch");
+btns.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    if (switchBtn.classList.contains("show-text")) {
+      switchBtn.classList.toggle("show-text");
+      video.play();
+    } else {
+      switchBtn.classList.toggle("show-text");
+      video.pause();
+    }
+    btn.classList.toggle("slide");
+  });
 });
