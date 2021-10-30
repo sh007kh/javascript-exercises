@@ -207,6 +207,11 @@ Navbar
 .nav-toggle:hover {
   transform: scale(1.2);
 }
+.link-container {
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
+}
 .nav-link {
   display: block;
   padding: 1rem 2rem;
@@ -223,11 +228,6 @@ Navbar
   padding-left: 2.25rem;
 }
 /* 280px */
-.nav-links {
-  height: 0;
-  overflow: hidden;
-  transition: var(--transition);
-}
 .show-links {
   height: 280px;
 }
