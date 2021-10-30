@@ -1,5 +1,6 @@
 // ********** set date ************
-// select span
+const date = document.querySelector("#date");
+date.innerHTML = new Date().getFullYear();
 // ********** close links ************
 
 // ********** nav toggle ************
