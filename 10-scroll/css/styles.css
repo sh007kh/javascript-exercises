@@ -165,19 +165,25 @@ p {
     width: 95vw;
   }
 }
+html {
+  scroll-behavior: smooth;
+}
 /*
 =============== 
 Navbar
 ===============
 */
 .navbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   background: var(--clr-white);
   box-shadow: var(--dark-shadow);
   z-index: 2;
+}
+.fixed-nav {
+  position: fixed;
 }
 .nav-logo {
   height: 1.5rem;
@@ -246,8 +252,11 @@ Navbar
     /* optional */
     flex-wrap: wrap;
   }
+  .link-container {
+    height: auto !important;
+  }
   .nav-links {
-    height: auto;
+    /* height: 0; */
     display: flex;
   }
   .nav-header {
