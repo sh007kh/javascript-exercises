@@ -661,3 +661,33 @@ Footer
   letter-spacing: var(--spacing);
   color: var(--clr-white);
 }
+.top-link {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--clr-primary-4);
+  display: grid;
+  place-items: center;
+  color: var(--clr-primary-1);
+  border-radius: var(--radius);
+  font-size: 1.25rem;
+  animation: bounce 1s infinite ease-in-out;
+  visibility: hidden;
+}
+.show-link {
+  visibility: visible;
+}
+/* ainimations */
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
