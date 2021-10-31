@@ -21,6 +21,17 @@ navToggle.addEventListener("click", function () {
 });
 
 // ********** fixed navbar ************
-
+const nav = document.querySelector("#nav");
+const navHeight = nav.getBoundingClientRect().height;
+console.log(navHeight);
+window.addEventListener("scroll", function () {
+  if (window.scrollY > navHeight) {
+    console.log(this.window.scrollY);
+    nav.classList.add("fixed-nav");
+  } else {
+    nav.classList.remove("fixed-nav");
+    console.log("removed");
+  }
+});
 // ********** smooth scroll ************
 // select links
