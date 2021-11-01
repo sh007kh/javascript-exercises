@@ -43,3 +43,25 @@ window.addEventListener("scroll", function () {
 });
 // ********** smooth scroll ************
 // select links
+const scrollLinks = document.querySelectorAll(".scroll-link");
+scrollLinks.forEach(function (link) {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const id = link.getAttribute("href").slice(1);
+    const element = document.getElementById(id);
+    const linkHeight = element.offsetTop;
+    console.log(linkHeight);
+    let position = linkHeight - navHeight;
+    console.log("position", position);
+    if (linkHeight === 0) {
+      position = linkHeight;
+    }
+    window.scrollTo({
+      left: 0,
+      top: position,
+    });
+    if (position > linksHeight) {
+      linksContainer.style.height = 0;
+    }
+  });
+});
