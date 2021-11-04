@@ -180,3 +180,62 @@ main {
 About
 ===============
 */
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.s-title {
+  font-weight: bold;
+}
+.about-photo {
+  height: 17rem;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+.about-info {
+  margin: 2rem auto;
+}
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+.tab-btn {
+  flex: 1 1 33.33%;
+  padding: 2rem 1rem;
+  border: none;
+  background-color: var(--clr-grey-9);
+  border-radius: 0;
+  box-shadow: none;
+}
+.tab-btn:hover {
+  background-color: var(--clr-grey-8);
+}
+.tab-btn:nth-child(1) {
+  border-top-left-radius: var(--radius);
+}
+.tab-btn:nth-child(3) {
+  border-top-right-radius: var(--radius);
+}
+.active {
+  background-color: var(--clr-black);
+  color: var(--clr-white);
+}
+.active:hover {
+  background-color: var(--clr-black);
+  color: var(--clr-white);
+}
+.about-content {
+  background-color: var(--clr-white);
+  margin: 0;
+  padding: 1rem 2rem;
+  display: none;
+}
+.about-content p {
+  margin: 0;
+}
+.show-content {
+  display: block;
+}
