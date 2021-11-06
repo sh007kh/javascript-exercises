@@ -177,3 +177,45 @@ main {
 Countdown Timer
 ===============
 */
+.gift-info {
+  padding: 2rem 1rem;
+}
+.gift-info h3 {
+  color: var(--clr-primary-3);
+  text-transform: uppercase;
+}
+.giveaway {
+  margin-bottom: 3rem;
+}
+.deadline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 0.5rem;
+  justify-items: center;
+  max-width: 25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.deadline-format {
+  background-color: var(--clr-grey-1);
+  color: var(--clr-white);
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+.deadline-format h4 {
+  font-size: 2rem;
+}
+@media screen and (min-width: 768px) {
+  .section-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    align-items: center;
+  }
+  .gift-img img {
+    min-height: 20rem;
+    object-fit: cover;
+  }
+}
