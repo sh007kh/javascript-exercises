@@ -24,8 +24,8 @@ const weekdays = [
 const giveaway = document.querySelector(".giveaway");
 const deadline = document.querySelector(".deadline");
 const deadlineFormat = document.querySelectorAll(".deadline-format h4");
-
-const giveAwayDate = new Date(2021, 12, 25, 8, 30, 0);
+const futureYear = new Date().getFullYear();
+const giveAwayDate = new Date(futureYear + 1, 12, 25, 8, 30, 0);
 const year = giveAwayDate.getFullYear();
 const month = months[giveAwayDate.getMonth()];
 const day = giveAwayDate.getDate();
