@@ -204,3 +204,8 @@ Lorem Ipsum
   border-radius: var(--radius);
   margin-right: 0.5rem;
 }
+.lorem-text {
+  max-width: 45rem;
+  margin-left: auto;
+  margin-right: auto;
+}
