@@ -181,3 +181,124 @@ main {
 Grocery List
 ===============
 */
+.grocery {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  box-shadow: var(--light-shadow);
+  padding: 4rem 2rem;
+  display: grid;
+  place-items: center;
+  transition: var(--transition);
+}
+.grocery:hover {
+  box-shadow: var(--dark-shadow);
+}
+.alert {
+  background-color: var(--clr-green-light);
+  color: var(--clr-green-dark);
+  width: 100%;
+  text-align: center;
+  padding: 0.25rem;
+  visibility: hidden;
+}
+.alert-remove {
+  background-color: var(--clr-red-light);
+  color: var(--clr-red-dark);
+}
+.form-control {
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+.grocery-input,
+.submit-btn {
+  padding: 0.5rem 0.5rem;
+  border: none;
+  font-size: 1rem;
+  font-family: var(--ff-primary);
+}
+.grocery-input {
+  background-color: var(--clr-grey-10);
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  flex: 1 1 70%;
+  outline: none;
+  color: var(--clr-grey-3);
+}
+.grocery-input::placeholder {
+  color: var(--clr-grey-5);
+  font-family: var(--ff-primary);
+  text-transform: capitalize;
+}
+.submit-btn {
+  border-top-right-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  background-color: var(--clr-primary-8);
+  flex: 1 1 20%;
+  color: var(--clr-primary-3);
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.submit-btn:hover {
+  background-color: var(--clr-primary-5);
+  color: var(--clr-primary-1);
+}
+.grocery-list {
+  position: relative;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 2rem;
+  transition: var(--transition);
+  padding: 0.5rem;
+  border-radius: var(--radius);
+}
+.grocery-list:hover {
+  background-color: var(--clr-grey-10);
+}
+.delete-btn:hover {
+  color: var(--clr-red-dark);
+  cursor: pointer;
+}
+.edit-btn:hover {
+  color: var(--clr-green-dark);
+  cursor: pointer;
+}
+.grocery-list-item {
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+}
+.btn-container button {
+  background-color: transparent;
+  border: transparent;
+  margin-right: 0.5rem;
+}
+.edit-btn {
+  color: var(--clr-green-light);
+  transition: var(--transition);
+}
+.delete-btn {
+  color: var(--clr-red-light);
+  transition: var(--transition);
+}
+.clear-btn {
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  border: transparent;
+  background-color: transparent;
+  color: var(--clr-red-light);
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.clear-btn:hover {
+  color: var(--clr-red-dark);
+}
+.clear-btn:hover .grocery-list:hover {
+  background-color: transparent;
+}
