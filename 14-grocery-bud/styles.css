@@ -193,9 +193,13 @@ Grocery List
 .grocery:hover {
   box-shadow: var(--dark-shadow);
 }
+.grocery-container {
+  visibility: hidden;
+}
+.show-container {
+  visibility: visible;
+}
 .alert {
-  background-color: var(--clr-green-light);
-  color: var(--clr-green-dark);
   width: 100%;
   text-align: center;
   padding: 0.25rem;
@@ -204,6 +208,12 @@ Grocery List
 .alert-remove {
   background-color: var(--clr-red-light);
   color: var(--clr-red-dark);
+  visibility: visible;
+}
+.alert-add {
+  background-color: var(--clr-green-light);
+  color: var(--clr-green-dark);
+  visibility: visible;
 }
 .form-control {
   display: flex;
@@ -246,7 +256,6 @@ Grocery List
 }
 .grocery-list {
   position: relative;
-  visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: space-between;
