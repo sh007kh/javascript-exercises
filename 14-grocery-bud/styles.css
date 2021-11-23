@@ -181,17 +181,20 @@ main {
 Grocery List
 ===============
 */
-.grocery {
+.grocery-center {
   background: var(--clr-white);
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
   padding: 4rem 2rem;
-  display: grid;
-  place-items: center;
+  position: relative;
   transition: var(--transition);
 }
-.grocery:hover {
+.grocery-center:hover {
   box-shadow: var(--dark-shadow);
+}
+.grocery {
+  display: grid;
+  place-items: center;
 }
 .grocery-container {
   visibility: hidden;
@@ -254,19 +257,27 @@ Grocery List
   background-color: var(--clr-primary-5);
   color: var(--clr-primary-1);
 }
-.grocery-list {
-  position: relative;
+.grocery-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  transition: var(--transition);
+  border-radius: var(--radius);
+}
+.grocery-item:hover {
+  background-color: var(--clr-grey-10);
+}
+.grocery-list {
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
   width: 80%;
   margin-top: 2rem;
+  padding-bottom: 0;
   transition: var(--transition);
   padding: 0.5rem;
   border-radius: var(--radius);
-}
-.grocery-list:hover {
-  background-color: var(--clr-grey-10);
 }
 .delete-btn:hover {
   color: var(--clr-red-dark);
@@ -279,6 +290,7 @@ Grocery List
 .grocery-list-item {
   text-transform: capitalize;
   letter-spacing: var(--spacing);
+  margin-bottom: 0;
 }
 .btn-container button {
   background-color: transparent;
@@ -295,10 +307,11 @@ Grocery List
 }
 .clear-btn {
   position: absolute;
-  bottom: -3rem;
+  bottom: 1.5rem;
   left: 50%;
   border: transparent;
   background-color: transparent;
+  transform: translate(-50%, -50%);
   color: var(--clr-red-light);
   letter-spacing: var(--spacing);
   text-transform: uppercase;
