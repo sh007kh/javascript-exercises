@@ -13,6 +13,7 @@ let editID = "";
 // ****** EVENT LISTENERS **********
 groceryForm.addEventListener("submit", addItem);
 clearBtn.addEventListener("click", clearItems);
+
 // ****** FUNCTIONS **********
 groceryList.addE;
 // add function
@@ -37,6 +38,9 @@ function addItem(e) {
                 </button>
               </div>
     `;
+    const deleteBtn = element.querySelector(".delete-btn");
+    const editBtn = element.querySelector(".edit-btn");
+    deleteBtn.addEventListener("click", deleteItem);
     // append item
     groceryList.append(element);
     addAlert("item added to list", "add");
@@ -69,6 +73,16 @@ function clearItems() {
   }
   setBackToDefault();
 }
+// delete function
+function deleteItem(e) {
+  const element = e.currentTarget.parentElement.parentElement;
+  groceryList.removeChild(element);
+  addAlert("removed from list", "remove");
+  if (groceryList.children.length === 0) {
+    groceryContainer.classList.remove("show-container");
+  }
+  setBackToDefault();
+}
 // set back to default function
 function setBackToDefault() {
   grocery.value = "";
@@ -79,7 +93,7 @@ function setBackToDefault() {
 // ****** LOCAL STORAGE **********
 // local storage function
 function addToLocalStorage(item, id) {
-  console.log("added to list");
+  // console.log("added to list");
 }
 
 // ****** SETUP ITEMS **********
