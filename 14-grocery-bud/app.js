@@ -12,6 +12,7 @@ let editFlag = false;
 let editID = "";
 // ****** EVENT LISTENERS **********
 groceryForm.addEventListener("submit", addItem);
+clearBtn.addEventListener("click", clearItems);
 // ****** FUNCTIONS **********
 groceryList.addE;
 // add function
@@ -38,12 +39,12 @@ function addItem(e) {
     `;
     // append item
     groceryList.append(element);
-    console.log(groceryList);
     addAlert("item added to list", "add");
     // show container
     groceryContainer.classList.add("show-container");
+    addToLocalStorage(value, id);
+    setBackToDefault();
   } else if (value && editFlag) {
-    console.log("editing");
   } else {
     addAlert("please enter an item", "remove");
   }
@@ -58,6 +59,27 @@ function addAlert(text, action) {
     alert.classList.remove(`alert-${action}`);
   }, 1000);
 }
+function clearItems() {
+  const items = document.querySelectorAll(".grocery-item");
+  if (items.length > 0) {
+    items.forEach(function (item) {
+      groceryList.removeChild(item);
+    });
+    groceryContainer.classList.remove("show-container");
+  }
+  setBackToDefault();
+}
+// set back to default function
+function setBackToDefault() {
+  grocery.value = "";
+  editFlag = false;
+  editID = "";
+  submitBtn.textContent = "submit";
+}
 // ****** LOCAL STORAGE **********
+// local storage function
+function addToLocalStorage(item, id) {
+  console.log("added to list");
+}
 
 // ****** SETUP ITEMS **********
