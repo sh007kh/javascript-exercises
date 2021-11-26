@@ -47,7 +47,7 @@ function addItem(e) {
     addAlert("item added to list", "add");
     // show container
     groceryContainer.classList.add("show-container");
-    addToLocalStorage(value, id);
+    addToLocalStorage(id, value);
     setBackToDefault();
   } else if (value && editFlag) {
     editElement.innerHTML = grocery.value;
@@ -108,8 +108,13 @@ function setBackToDefault() {
 }
 // ****** LOCAL STORAGE **********
 // local storage function
-function addToLocalStorage(item, id) {
-  // console.log("added to list");
+function addToLocalStorage(id, value) {
+  const grocery = { id, value };
+  let items = localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list"))
+    : [];
+  items.push(grocery);
+  localStorage.setItem("list", JSON.stringify(items));
 }
 function editLocalStorage(id, value) {}
 // ****** SETUP ITEMS **********
