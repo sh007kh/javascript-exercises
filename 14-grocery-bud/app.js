@@ -78,6 +78,7 @@ function clearItems() {
     groceryContainer.classList.remove("show-container");
   }
   setBackToDefault();
+  localStorage.removeItem("list");
 }
 // delete function
 function deleteItem(e) {
@@ -89,6 +90,7 @@ function deleteItem(e) {
     groceryContainer.classList.remove("show-container");
   }
   setBackToDefault();
+  removeFromLocalStorage(id);
 }
 // editItem function
 function editItem(e) {
@@ -110,11 +112,23 @@ function setBackToDefault() {
 // local storage function
 function addToLocalStorage(id, value) {
   const grocery = { id, value };
-  let items = localStorage.getItem("list")
-    ? JSON.parse(localStorage.getItem("list"))
-    : [];
+  let items = getFromLocalStorage;
   items.push(grocery);
   localStorage.setItem("list", JSON.stringify(items));
 }
+function removeFromLocalStorage(id) {
+  let items = getFromLocalStorage;
+  items.filter(function (item) {
+    if (item.id !== id) {
+      return item;
+    }
+  });
+  localStorage.setItem("list", JSON.stringify(items));
+}
 function editLocalStorage(id, value) {}
+function getFromLocalStorage() {
+  return localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list"))
+    : [];
+}
 // ****** SETUP ITEMS **********
