@@ -13,7 +13,7 @@ let editID = "";
 // ****** EVENT LISTENERS **********
 groceryForm.addEventListener("submit", addItem);
 clearBtn.addEventListener("click", clearItems);
-
+window.addEventListener("DOMContentLoaded", setUpListItems);
 // ****** FUNCTIONS **********
 groceryList.addE;
 // add function
@@ -22,28 +22,7 @@ function addItem(e) {
   const value = grocery.value;
   const id = new Date().getTime().toString();
   if (value && !editFlag) {
-    const element = document.createElement("article");
-    let attr = document.createAttribute("data-id");
-    attr.value = id;
-    element.setAttributeNode(attr);
-    element.classList.add("grocery-item");
-    element.innerHTML = `
-    <p class="grocery-list-item">${value}</p>
-              <div class="btn-container">
-                <button class="edit-btn">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button class="delete-btn">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
-    `;
-    const deleteBtn = element.querySelector(".delete-btn");
-    const editBtn = element.querySelector(".edit-btn");
-    deleteBtn.addEventListener("click", deleteItem);
-    editBtn.addEventListener("click", editItem);
-    // append item
-    groceryList.append(element);
+    createListItems(id, value);
     addAlert("item added to list", "add");
     // show container
     groceryContainer.classList.add("show-container");
@@ -141,3 +120,38 @@ function getFromLocalStorage() {
     : [];
 }
 // ****** SETUP ITEMS **********
+function setUpListItems() {
+  let items = getFromLocalStorage();
+  if (items.length > 0) {
+    items.forEach(function (item) {
+      createListItems(item.id, item.value);
+    });
+    groceryContainer.classList.add("show-container");
+  }
+}
+
+// creat list
+function createListItems(id, value) {
+  const element = document.createElement("article");
+  let attr = document.createAttribute("data-id");
+  attr.value = id;
+  element.setAttributeNode(attr);
+  element.classList.add("grocery-item");
+  element.innerHTML = `
+    <p class="grocery-list-item">${value}</p>
+              <div class="btn-container">
+                <button class="edit-btn">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="delete-btn">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+    `;
+  const deleteBtn = element.querySelector(".delete-btn");
+  const editBtn = element.querySelector(".edit-btn");
+  deleteBtn.addEventListener("click", deleteItem);
+  editBtn.addEventListener("click", editItem);
+  // append item
+  groceryList.append(element);
+}
