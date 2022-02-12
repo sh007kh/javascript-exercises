@@ -194,3 +194,45 @@ Slider
 .img-logo {
   height: 2rem;
 }
+.slides {
+  min-height: 100vh;
+}
+.slide-center {
+  display: grid;
+  place-items: center;
+}
+.slider {
+  position: relative;
+  overflow: hidden;
+}
+.slide {
+  position: relative;
+  display: flex;
+  max-width: 800px;
+}
+.slide-img {
+  flex: 1 0 100%;
+  height: 400px;
+  max-height: 100vh;
+  object-fit: cover;
+}
+.btn-container {
+  margin-top: 1rem;
+}
+.slide-progressbar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 6px;
+  background-color: var(--clr-grey-6);
+  z-index: 5;
+}
+.slide-progressbar::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  height: 6px;
+  width: var(--slide-progressbar-width);
+  background-color: var(--clr-grey-3);
+  transition: var(--slide-progress--transition);
+}
