@@ -3,16 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slider</title>
-
+    <title>login form</title>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
     <!-- styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <h3>password Checker</h3>
-    </nav>
-    <main></main>
+    <section class="section">
+      <div class="section-center">
+        <form class="login">
+          <h3>sign in</h3>
+          <div class="form-control">
+            <input
+              type="username"
+              name="username"
+              id="username"
+              placeholder="enter your username"
+            />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="enter your password"
+            />
+            <button class="submit-btn" type="submit" id="submit">login</button>
+          </div>
+          <div class="alert-container">
+            <!-- <p class="alert"></p> -->
+          </div>
+        </form>
+      </div>
+    </section>
     <!-- javascript -->
     <script src="app.js"></script>
   </body>
