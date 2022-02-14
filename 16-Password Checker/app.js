@@ -15,23 +15,28 @@ form.addEventListener("submit", function (e) {
   console.log(`username is ${usernameHolder}`);
   const passwordHolder = password.value;
   console.log(`password is ${passwordHolder}`);
+  if (passwordHolder.includes(usernameHolder)) {
+    alertStore(processAlert("password should not contain 'username'", "red"));
+  }
   if (passwordHolder.includes(" ")) {
     alertStore(processAlert("password should not contain space", "red"));
-  }
-  if (passwordHolder.includes("usernameHolder")) {
-    alertStore("password should not contain space", "red");
   }
   if (passwordHolder.length < 8) {
     alertStore(processAlert("password should be at least 8 character", "red"));
   }
   if (!hasLowerCase(passwordHolder)) {
+    alertStore(processAlert("password should contain lowercase", "red"));
   }
   if (!hasUpperCase(passwordHolder)) {
     alertStore(processAlert("password should contain uppercase", "red"));
   }
   alertContainer.innerHTML = alertArray.join("");
+  setToDefault();
 });
 // ****** FUNCTIONS **********
+function setToDefault() {
+  alertArray = [];
+}
 function hasLowerCase(str) {
   return str.toUpperCase() != str;
 }
