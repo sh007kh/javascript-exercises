@@ -30,6 +30,11 @@ form.addEventListener("submit", function (e) {
   if (!hasUpperCase(passwordHolder)) {
     alertStore(processAlert("password should contain uppercase", "red"));
   }
+  if (!hasNumber(passwordHolder)) {
+    alertStore(
+      processAlert("password should contain at least a number", "red")
+    );
+  }
   alertContainer.innerHTML = alertArray.join("");
   setToDefault();
 });
@@ -43,7 +48,9 @@ function hasLowerCase(str) {
 function hasUpperCase(str) {
   return str.toLowerCase() != str;
 }
-
+function hasNumber(str) {
+  return /\d/.test(str);
+}
 // display alert
 function processAlert(text, item) {
   return `<p class="alert alert-${item}">${text}</p>`;
