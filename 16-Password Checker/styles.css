@@ -197,9 +197,6 @@ main {
   box-shadow: var(--dark-shadow);
 }
 .section-center {
-  /* background: var(--clr-white); */
-  /* border-radius: var(--radius); */
-  /* box-shadow: var(--light-shadow); */
   padding: 2rem;
   display: grid;
   place-items: center;
@@ -213,7 +210,6 @@ main {
 }
 .alert {
   margin-bottom: 1rem;
-  /* height: 1.25rem; */
   text-align: center;
   font-size: 0.7rem;
   border-radius: 0.25rem;
@@ -266,7 +262,6 @@ main {
 .submit-btn {
   background: var(--clr-primary-8);
   border-color: transparent;
-  /* flex: 0 0 2rem; */
   display: grid;
   align-items: center;
   padding: 0.25rem;
@@ -283,4 +278,57 @@ main {
 .submit-btn:hover {
   background: var(--clr-primary-5);
   color: var(--clr-white);
+}
+/* sign up */
+.sign-up-btn {
+  cursor: pointer;
+  color: var(--clr-primary-4);
+  text-transform: capitalize;
+  text-align: center;
+}
+.sign-up {
+  background-color: var(--clr-white);
+  box-shadow: var(--light-shadow);
+  width: 100%;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  padding: 4rem 1rem;
+  max-width: 60vw;
+  transition: var(--transition);
+}
+.sign-up h3 {
+  color: var(--clr-primary-1);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+/*  */
+
+.form-center {
+  height: auto;
+  margin-bottom: 2rem;
+  position: relative;
+  perspective: 1500px;
+}
+.form-side {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  min-height: 90%;
+  width: 100%;
+  backface-visibility: hidden;
+  transition: all 1s linear;
+  margin-bottom: 2rem;
+}
+
+.sign-up {
+  transform: rotateY(-180deg);
+  display: grid;
+  place-items: center;
+}
+.form-rotate .login {
+  transform: rotateY(180deg);
+}
+.form-rotate .sign-up {
+  transform: rotateY(0);
 }
