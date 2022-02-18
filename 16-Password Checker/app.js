@@ -5,6 +5,8 @@ const password = document.getElementById("password");
 const submitBtn = document.querySelector(".submit-btn");
 const alert = document.querySelector(".alert");
 const alertContainer = document.querySelector(".alert-container");
+const signUpBtns = document.querySelectorAll(".sign-up-btn");
+const formCenter = document.querySelector(".form-center");
 
 // edit option
 
@@ -37,6 +39,13 @@ form.addEventListener("submit", function (e) {
   }
   alertContainer.innerHTML = alertArray.join("");
   setToDefault();
+});
+
+// signup button
+signUpBtns.forEach(function (signUpBtn) {
+  signUpBtn.addEventListener("click", function () {
+    formCenter.classList.toggle("form-rotate");
+  });
 });
 // ****** FUNCTIONS **********
 function setToDefault() {
