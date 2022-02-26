@@ -242,7 +242,8 @@ main {
   margin-bottom: 1rem;
 }
 #username,
-#password {
+#password,
+#email {
   padding: 0.5rem 3rem;
   padding-left: 1rem;
   border-color: transparent;
@@ -253,11 +254,13 @@ main {
   width: 100%;
 }
 #username:focus,
+#email:focus,
 #password:focus {
   border-bottom: 1px solid var(--clr-red-dark);
   outline: none;
 }
 #username::placeholder,
+#email::placeholder,
 #password::placeholder {
   text-transform: capitalize;
   font-family: var(--ff-secondary);
@@ -299,6 +302,13 @@ main {
   color: var(--clr-primary-4);
   text-transform: capitalize;
   text-align: center;
+}
+.sign-up-btn span {
+  color: var(--clr-primary-2);
+  text-decoration: underline;
+}
+.sign-up-btn:hover span {
+  color: var(--clr-red-light);
 }
 .sign-up {
   background-color: var(--clr-white);
