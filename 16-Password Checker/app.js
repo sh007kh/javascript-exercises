@@ -2,6 +2,7 @@
 const loginForm = document.querySelector(".login");
 const signUpForm = document.querySelector(".sign-up");
 const username = document.getElementById("username");
+const email = document.getElementById("email");
 const password = document.getElementById("password");
 const submitBtn = document.querySelector(".submit-btn");
 const alert = document.querySelector(".alert");
@@ -33,12 +34,15 @@ signUpForm.addEventListener("submit", function (e) {
   console.log("clicked");
   const usernameHolder = this.username.value;
   console.log(`username is ${usernameHolder}`);
+  const emailHolder = this.email.value;
+  console.log(`email is ${emailHolder}`);
   const passwordHolder = this.password.value;
   console.log(`password is ${passwordHolder}`);
   // checkLocalStorage(usernameHolder, passwordHolder);
-  if (checkLocalStorage(usernameHolder, passwordHolder)) {
+  if (checkLocalStorage(usernameHolder, emailHolder)) {
     console.log("username already existed ");
-    alertStore(processAlert("username already existed ", "red"));
+  } else if (checkEmailLocalStorage(emailHolder)) {
+    console.log("email already existed ");
   } else if (passwordHolder.includes(usernameHolder)) {
     alertStore(processAlert("password should not contain 'username'", "red"));
   } else if (passwordHolder.includes(" ")) {
@@ -54,7 +58,7 @@ signUpForm.addEventListener("submit", function (e) {
       processAlert("password should contain at least a number", "red")
     );
   } else {
-    addToLocalStorage(usernameHolder, passwordHolder);
+    addToLocalStorage(usernameHolder, passwordHolder, emailHolder);
     alertStore(processAlert("your sign up completed succsefully ", "green"));
   }
   signUpForm.querySelector(".alert-container").innerHTML = alertArray.join("");
@@ -93,8 +97,8 @@ function alertStore(processAlert) {
 
 // ****** LOCAL STORAGE **********
 // add to local storage
-function addToLocalStorage(username, password) {
-  const user = { username, password };
+function addToLocalStorage(username, password, email) {
+  const user = { username, password, email };
   let items = getFromLocalStorage();
   items.push(user);
   localStorage.setItem("list", JSON.stringify(items));
@@ -106,8 +110,8 @@ function getFromLocalStorage() {
     : [];
 }
 
-function checkLocalStorage(username, password) {
-  const user = { username, password };
+function checkLocalStorage(username, email) {
+  const user = { username, email };
   let items = getFromLocalStorage();
   items = items.find(function (item) {
     if (item.username === username) {
@@ -115,6 +119,24 @@ function checkLocalStorage(username, password) {
     }
   });
   if (items) {
+    alertStore(processAlert("username already existed ", "red"));
+    return true;
+  }
+}
+function checkEmailLocalStorage(email) {
+  let items = getFromLocalStorage();
+  items = items.find(function (item) {
+    if (item.email === email) {
+      return item;
+    }
+  });
+  if (items) {
+    alertStore(
+      processAlert(
+        "this email already existed sign in with your account",
+        "red"
+      )
+    );
     return true;
   }
 }
@@ -133,6 +155,10 @@ function validateLocalStorage(username, password) {
     } else {
       alertStore(processAlert("your password is not correct ", "red"));
     }
+  } else {
+    alertStore(
+      processAlert("this username doesn't exist , please sign up", "red")
+    );
   }
 }
 // ****** SETUP ITEMS **********
