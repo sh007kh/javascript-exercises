@@ -183,6 +183,7 @@ main {
   background-color: var(--clr-white);
 }
 .login {
+  position: relative;
   background-color: var(--clr-white);
   box-shadow: var(--light-shadow);
   width: 100%;
@@ -244,14 +245,17 @@ main {
 #password {
   padding: 0.5rem 3rem;
   padding-left: 1rem;
-  background: var(--clr-grey-10);
-  border-top-left-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
   border-color: transparent;
+  border-bottom: 1px solid var(--clr-primary-5);
   font-size: 1rem;
   flex: 1 0 100%;
   color: var(--clr-grey-5);
   width: 100%;
+}
+#username:focus,
+#password:focus {
+  border-bottom: 1px solid var(--clr-red-dark);
+  outline: none;
 }
 #username::placeholder,
 #password::placeholder {
@@ -278,6 +282,16 @@ main {
 .submit-btn:hover {
   background: var(--clr-primary-5);
   color: var(--clr-white);
+}
+.login-forgot {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  text-transform: capitalize;
+  text-decoration: underline;
+}
+.login-forgot:hover {
+  color: var(--clr-red-light);
 }
 /* sign up */
 .sign-up-btn {
