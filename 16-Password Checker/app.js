@@ -1,5 +1,6 @@
 // ****** SELECT ITEMS **********
-const form = document.querySelector(".login");
+const loginForm = document.querySelector(".login");
+const signUpForm = document.querySelector(".sign-up");
 const username = document.getElementById("username");
 const password = document.getElementById("password");
 const submitBtn = document.querySelector(".submit-btn");
@@ -11,33 +12,52 @@ const formCenter = document.querySelector(".form-center");
 // edit option
 
 // ****** EVENT LISTENERS **********
-form.addEventListener("submit", function (e) {
+window.addEventListener("DOMContentLoaded", setupItems);
+
+loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  const usernameHolder = username.value;
+  const usernameHolder = this.username.value;
   console.log(`username is ${usernameHolder}`);
-  const passwordHolder = password.value;
+  const passwordHolder = this.password.value;
   console.log(`password is ${passwordHolder}`);
-  if (passwordHolder.includes(usernameHolder)) {
+  if (validateLocalStorage(usernameHolder, passwordHolder)) {
+    alertStore(processAlert("successfully signed in ", "green"));
+  } else {
+    console.log("error");
+  }
+  alertContainer.innerHTML = alertArray.join("");
+  setToDefault();
+});
+signUpForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  console.log("clicked");
+  const usernameHolder = this.username.value;
+  console.log(`username is ${usernameHolder}`);
+  const passwordHolder = this.password.value;
+  console.log(`password is ${passwordHolder}`);
+  // checkLocalStorage(usernameHolder, passwordHolder);
+  if (checkLocalStorage(usernameHolder, passwordHolder)) {
+    console.log("username already existed ");
+    alertStore(processAlert("username already existed ", "red"));
+  } else if (passwordHolder.includes(usernameHolder)) {
     alertStore(processAlert("password should not contain 'username'", "red"));
-  }
-  if (passwordHolder.includes(" ")) {
+  } else if (passwordHolder.includes(" ")) {
     alertStore(processAlert("password should not contain space", "red"));
-  }
-  if (passwordHolder.length < 8) {
+  } else if (passwordHolder.length < 8) {
     alertStore(processAlert("password should be at least 8 character", "red"));
-  }
-  if (!hasLowerCase(passwordHolder)) {
+  } else if (!hasLowerCase(passwordHolder)) {
     alertStore(processAlert("password should contain lowercase", "red"));
-  }
-  if (!hasUpperCase(passwordHolder)) {
+  } else if (!hasUpperCase(passwordHolder)) {
     alertStore(processAlert("password should contain uppercase", "red"));
-  }
-  if (!hasNumber(passwordHolder)) {
+  } else if (!hasNumber(passwordHolder)) {
     alertStore(
       processAlert("password should contain at least a number", "red")
     );
+  } else {
+    addToLocalStorage(usernameHolder, passwordHolder);
+    alertStore(processAlert("your sign up completed succsefully ", "green"));
   }
-  alertContainer.innerHTML = alertArray.join("");
+  signUpForm.querySelector(".alert-container").innerHTML = alertArray.join("");
   setToDefault();
 });
 
@@ -50,6 +70,8 @@ signUpBtns.forEach(function (signUpBtn) {
 // ****** FUNCTIONS **********
 function setToDefault() {
   alertArray = [];
+  // this.username.value = "";
+  // this.password.value = "";
 }
 function hasLowerCase(str) {
   return str.toUpperCase() != str;
@@ -69,8 +91,51 @@ function alertStore(processAlert) {
   alertArray.push(processAlert);
 }
 
-console.log("alertArray", alertArray);
-
 // ****** LOCAL STORAGE **********
+// add to local storage
+function addToLocalStorage(username, password) {
+  const user = { username, password };
+  let items = getFromLocalStorage();
+  items.push(user);
+  localStorage.setItem("list", JSON.stringify(items));
+}
 
+function getFromLocalStorage() {
+  return localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list"))
+    : [];
+}
+
+function checkLocalStorage(username, password) {
+  const user = { username, password };
+  let items = getFromLocalStorage();
+  items = items.find(function (item) {
+    if (item.username === username) {
+      return item;
+    }
+  });
+  if (items) {
+    return true;
+  }
+}
+
+function validateLocalStorage(username, password) {
+  if (checkLocalStorage(username, password)) {
+    console.log(username, "is existed");
+    items = items.find(function (item) {
+      if (item.password === password) {
+        return item;
+      }
+    });
+    console.log(items);
+    if (items) {
+      return true;
+    } else {
+      alertStore(processAlert("your password is not correct ", "red"));
+    }
+  }
+}
 // ****** SETUP ITEMS **********
+function setupItems() {
+  return (items = getFromLocalStorage());
+}
