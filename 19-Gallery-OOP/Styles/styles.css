@@ -213,7 +213,7 @@ gallery
 .modal {
   display: none;
 }
-.open {
+.open-modal {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -281,7 +281,30 @@ gallery
   object-fit: cover;
   width: 7rem;
   opacity: 50%;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.modal-sub-image:hover {
+  opacity: 100%;
 }
 .selected {
   opacity: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .nature-center,
+  .city-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .slide-image {
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 992px) {
+  .nature-center,
+  .city-center {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
