@@ -173,3 +173,61 @@ html {
 
 ===============
 */
+.navbar {
+  background-color: var(--clr-white);
+  height: 5rem;
+  box-shadow: var(--dark-shadow);
+}
+.nav-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  border: 2px solid var(--clr-primary-5);
+  color: var(--clr-grey-3);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+}
+.nav-logo {
+  height: 5rem;
+  /* padding-left: 3rem; */
+}
+.section {
+  background: url("../images/main.jpg") center/cover no-repeat;
+  min-height: calc(100vh - 5rem);
+}
+
+.section-title {
+  margin-bottom: 2rem;
+}
+.underline {
+  height: 2px;
+  width: 50%;
+  background-color: var(--clr-primary-5);
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero {
+  color: var(--clr-white);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.key-center {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.key {
+  border: 1px solid var(--clr-primary-5);
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding: 1.2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+}
