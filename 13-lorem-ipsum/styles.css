@@ -183,29 +183,62 @@ main {
 Lorem Ipsum
 ===============
 */
-.lorem-form {
-  margin: 2rem auto;
+
+.section {
+  background-color: var(--clr-grey-10);
+  min-height: 100vh;
 }
-.lorem-form label {
-  font-size: 1.5rem;
-  text-transform: capitalize;
-  margin-right: 0.5rem;
-  letter-spacing: var(--spacing);
-}
-.amount {
-  padding: 0.375rem 0.75rem;
-  width: 5rem;
-  height: 2.5rem;
-  font-size: 1.5rem;
+.lorem-center {
+  display: grid;
+  justify-content: center;
   text-align: center;
-  font-family: var(--ff-primary);
-  border: none;
-  background-color: var(--clr-white);
-  border-radius: var(--radius);
-  margin-right: 0.5rem;
+  row-gap: 3rem;
 }
-.lorem-text {
-  max-width: 45rem;
+.lorem-form {
+  background-color: var(--clr-white);
+  text-transform: capitalize;
+  width: 15rem;
+  max-width: 90vw;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.amount {
+  background-color: var(--clr-grey-10);
+  margin: 2rem auto;
+  width: 5rem;
+  height: 2rem;
+  text-align: center;
+  align-self: center;
+  border: none;
+  outline: none;
+}
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.btn-submit {
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+.lorem-text-container {
+  background-color: var(--clr-white);
+  border-radius: var(--radius);
+}
+.btn-copy {
+  width: 10rem;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: var(--clr-primary-4);
+  display: none;
+}
+.btn-copy-show {
+  display: block;
 }
