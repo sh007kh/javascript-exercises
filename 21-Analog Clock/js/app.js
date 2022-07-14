@@ -1,83 +1,32 @@
-const audios = [
-  {
-    name: "clap",
-    id: "KeyA",
-    src: "./sounds/clap.wav",
-  },
-  {
-    name: "hihat",
-    id: "KeyS",
-    src: "./sounds/hihat.wav",
-  },
-  {
-    name: "kick",
-    id: "KeyD",
-    src: "./sounds/kick.wav",
-  },
-  {
-    name: "openhat",
-    id: "KeyF",
-    src: "./sounds/openhat.wav",
-  },
-  {
-    name: "boom",
-    id: "KeyG",
-    src: "./sounds/boom.wav",
-  },
-  {
-    name: "ride",
-    id: "KeyH",
-    src: "./sounds/ride.wav",
-  },
-  {
-    name: "snare",
-    id: "KeyJ",
-    src: "./sounds/snare.wav",
-  },
-  {
-    name: "tom",
-    id: "KeyK",
-    src: "./sounds/tom.wav",
-  },
-  {
-    name: "tink",
-    id: "KeyL",
-    src: "./sounds/tink.wav",
-  },
-];
-const keys = document.querySelectorAll(".key");
+// variables
+const second = document.querySelector(".second");
+const minute = document.querySelector(".minute");
+const hour = document.querySelector(".hour");
 
-keys.forEach(function (key) {
-  key.addEventListener("click", function (e) {
-    key.classList.add("key-active");
-    const target = e.currentTarget;
-    const keyId = target.dataset.key;
-    const song = audios.find(function (item) {
-      if (item.id === keyId) {
-        return item;
-      }
-    });
-    let audio = new Audio(`${song.src}`);
-    audio.play();
-    setTimeout(function () {
-      target.classList.remove("key-active");
-    }, 200);
-  });
-});
-window.addEventListener("keypress", function (e) {
-  keys.forEach(function (key) {
-    if (key.dataset.key === e.code) {
-      key.classList.add("key-active");
-      const song = audios.find(function (item) {
-        if (item.id === e.code) {
-          return item;
-        }
-      });
-      let audio = new Audio(`${song.src}`);
-      audio.play();
-      setTimeout(function () {
-        key.classList.remove("key-active");
-      }, 200);
-    }
-  });
-});
+let countdown;
+let secondCounter = 0;
+let minutesCounter = 0;
+let hourCounter = 0;
+
+function getTime() {
+  const seconds = new Date().getSeconds();
+  secondCounter = seconds * 6 - 90;
+
+  const minutes = new Date().getMinutes();
+  minutesCounter = minutes * 6 - 90;
+
+  let hours = new Date().getHours();
+  if (hours > 12) {
+    hours -= 12;
+  }
+  hourCounter = hours * 30 - 90;
+
+  second.style.transform = `rotateZ(${secondCounter}deg)`;
+  minute.style.transform = `rotateZ(${minutesCounter}deg)`;
+  hour.style.transform = `rotateZ(${hourCounter + minutes / 2}deg)`;
+}
+
+function myStartFunction() {
+  countdown = setInterval(getTime, 1000);
+}
+myStartFunction();
