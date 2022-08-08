@@ -165,3 +165,130 @@ navbar
 Products 
 ===============
 */
+.search-form {
+  display: flex;
+  align-items: flex-start;
+}
+.search-input {
+  position: relative;
+  padding: 0.5rem;
+  background: var(--grey-200);
+  border-radius: var(--borderRadius);
+  border-color: transparent;
+  letter-spacing: var(--letterSpacing);
+  outline: none;
+  margin-bottom: 2rem;
+  width: 50%;
+  margin-right: 0.5rem;
+}
+.clear-btn {
+  padding: 0.125rem 0.5rem;
+  border-radius: 50%;
+  visibility: hidden;
+  opacity: 0;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.clear-btn:hover {
+  background-color: var(--grey-300);
+  color: var(--grey-500);
+}
+.show-clear-btn {
+  visibility: visible;
+  opacity: 1;
+}
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+.button-title {
+  text-transform: capitalize;
+  color: var(--black);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 1rem;
+}
+.filter-btn {
+  margin-bottom: 0.25rem;
+  background-color: transparent;
+  padding: 0.75rem 1.5rem 0.75rem 0;
+  border: transparent;
+  color: var(--grey-600);
+  text-transform: capitalize;
+  cursor: pointer;
+  letter-spacing: var(--letterSpacing);
+  transition: var(--transition);
+}
+.filter-btn:hover {
+  color: var(--black);
+}
+.products-container {
+  display: grid;
+  gap: 1rem;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-img {
+  border-radius: var(--borderRadius);
+  height: 15rem;
+}
+.product-title {
+  color: var(--grey-500);
+  text-transform: capitalize;
+  margin-bottom: 0.25rem;
+}
+.product-price {
+  font-weight: 600;
+}
+/* 
+=========
+media queries
+=========
+*/
+@media screen and (min-width: 768px) {
+  .container-center {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+  }
+  .filter-container {
+    align-self: start;
+  }
+  .search-input {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .product {
+    margin-bottom: 0;
+  }
+  .products-container .product-img {
+    height: 10rem;
+  }
+  .products-container .product-title {
+    font-size: 0.85rem;
+  }
+  .products-container .product-price {
+    font-size: 0.85rem;
+  }
+}
+@media screen and (min-width: 1170px) {
+  .products-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
