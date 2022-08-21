@@ -20,7 +20,36 @@
     </nav>
     <!-- section -->
     <section class="section jokes">
-      <div class="section-center joke-center"></div>
+      <div class="section-center joke-center">
+        <a href="https://api.chucknorris.io/" class="joke-api" target="_blank">
+          <img
+            src="https://api.chucknorris.io/img/chucknorris_logo_coloured_small.png"
+            alt="chuck norris logo"
+            class="img joke-img"
+          />
+        </a>
+        <form class="form-joke" id="form-joke">
+          <button type="submit" class="btn btn-submit">make me laugh</button>
+          <div class="joke-select-container">
+            <label for="joke-category">select a category</label>
+            <select name="categories" id="joke-category">
+              <option value="select">select</option>
+            </select>
+          </div>
+
+          <div class="joke-search-container">
+            <label for="joke-search">or </label>
+            <input
+              type="search"
+              name="search"
+              id="joke-search"
+              class="joke-search"
+              placeholder="search..."
+            />
+          </div>
+        </form>
+        <p class="joke-text"></p>
+      </div>
     </section>
     <script src="./js/app.js"></script>
   </body>
