@@ -122,6 +122,7 @@ ul {
 .img {
   width: 100%;
   display: block;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 .section {
@@ -142,13 +143,12 @@ html {
 }
 .btn {
   font-size: 0.75rem;
-  color: var(--clr-white);
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--radius);
-  border: 0.125rem solid var(--clr-primary-5);
-  background-color: var(--clr-primary-5);
+  color: var(--white);
+  padding: 0.5rem 5rem;
+  border-radius: var(--borderRadius);
+  border: 0.125rem solid var(--primary-500);
+  background-color: var(--primary-500);
   font-weight: bold;
-  font-family: var(--ff-secondary);
   transition: var(--transition);
   letter-spacing: var(--spacing);
   cursor: pointer;
@@ -157,7 +157,7 @@ html {
 }
 .btn:hover {
   background-color: transparent;
-  color: var(--clr-primary-5);
+  color: var(--primary-500);
   box-shadow: var(--dark-shadow);
 }
 /*
@@ -178,9 +178,121 @@ navbar
   align-self: center;
   margin-top: 0.75rem;
 }
-
 /*
 =============== 
 jokes 
+===============
+*/
+#joke-category {
+  padding: 0.125rem 1rem;
+  background-color: transparent;
+  border-radius: var(--borderRadius);
+  border: 1px solid var(--primary-500);
+  transition: var(--transition);
+}
+.joke-center {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.joke-img {
+  width: 70%;
+  max-width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin-bottom: 2rem;
+}
+.shake-img {
+  -webkit-animation: shake 0.25s infinite ease-in-out;
+  animation: shake 0.25s infinite ease-in-out;
+}
+.form-joke {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.joke-text {
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 25rem;
+}
+/*
+=============== 
+animations
+===============
+*/
+@-webkit-keyframes shake {
+  10% {
+    transform: translate(1px, 1px) rotate(1deg);
+  }
+  20% {
+    transform: translate(0px, 1px) rotate(0deg);
+  }
+  30% {
+    transform: translate(1px, -1px) rotate(-1deg);
+  }
+  40% {
+    transform: translate(-1px, 0px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, -1px) rotate(0deg);
+  }
+  60% {
+    transform: translate(0px, 1px) rotate(-1deg);
+  }
+  70% {
+    transform: translate(1px, 0px) rotate(1deg);
+  }
+  80% {
+    transform: translate(-1px, 0px) rotate(0deg);
+  }
+  90% {
+    transform: translate(0px, -1px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+@keyframes shake {
+  10% {
+    transform: translate(1px, 1px) rotate(1deg);
+  }
+  20% {
+    transform: translate(0px, 1px) rotate(0deg);
+  }
+  30% {
+    transform: translate(1px, -1px) rotate(-1deg);
+  }
+  40% {
+    transform: translate(-1px, 0px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, -1px) rotate(0deg);
+  }
+  60% {
+    transform: translate(0px, 1px) rotate(-1deg);
+  }
+  70% {
+    transform: translate(1px, 0px) rotate(1deg);
+  }
+  80% {
+    transform: translate(-1px, 0px) rotate(0deg);
+  }
+  90% {
+    transform: translate(0px, -1px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+/*
+=============== 
+mediaQueries 
 ===============
 */
