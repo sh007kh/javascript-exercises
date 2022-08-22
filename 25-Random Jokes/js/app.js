@@ -1,5 +1,5 @@
 // api -------------
-const url = "https://api.chucknorris.io/jokes/random";
+let url = "https://api.chucknorris.io/jokes/random";
 // variables -------------
 const jokeCenter = document.querySelector(".joke-center");
 const jokeImage = document.querySelector(".joke-img");
@@ -17,62 +17,99 @@ form.addEventListener("submit", (e) => {
   const categoryValue = categories.value;
   const searchValue = searchBox.value;
   const urlByCategory = `https://api.chucknorris.io/jokes/random?category=${categoryValue}`;
+
   if (searchBox.value === "") {
-    categoryValue === "select" ? getData(url) : getData(urlByCategory);
+    categoryValue === "select" ? url : (url = urlByCategory);
   } else {
     const urlByKeyword = `https://api.chucknorris.io/jokes/search?query=${searchValue}`;
-    getData(urlByKeyword);
+    url = urlByKeyword;
   }
+
+  getData(url)
+    .then((response) => displayData(response))
+    .catch((err) => console.log(err));
 });
 
 // select
 categories.addEventListener("change", () => {
   searchBox.value = "";
-  console.log(categories.value);
 });
 
 // functions -------------
 
+// show categories
+getCategory()
+  .then((response) => {
+    displayCategory(response);
+  })
+  .catch((err) => console.log(err));
+
 // get data
 function getData(url) {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", url);
-  xhr.send();
-  xhr.onreadystatechange = () => {
-    if (xhr.status !== 200) {
-      return;
-    }
-    const response = JSON.parse(xhr.responseText);
-    // for search method, it returns multiple objects
-    const responseArr = response.result;
-    const value = responseArr
-      ? responseArr[randomNumer(responseArr)].value
-      : response.value;
-    jokeText.textContent = value;
-    return value;
-  };
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState < 4) {
+        return;
+      }
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        resolve(xhr.responseText);
+      } else {
+        reject({
+          status: xhr.status,
+          statusText: xhr.statusText,
+        });
+      }
+    };
+  });
 }
+
 // get categories for select
 function getCategory() {
-  const url = "https://api.chucknorris.io/jokes/categories";
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", url);
-  xhr.send();
-  xhr.onreadystatechange = () => {
-    if (xhr.status !== 200) {
-      return;
-    }
-    const response = JSON.parse(xhr.responseText);
-    const selection = response
-      .map((item) => {
-        return `<option value="${item}">${item}</option>`;
-      })
-      .join("");
-    categories.innerHTML += selection;
-  };
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    const url = "https://api.chucknorris.io/jokes/categories";
+    xhr.open("GET", url);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState < 4) {
+        return;
+      }
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        resolve(xhr.responseText);
+      } else {
+        reject({
+          status: xhr.status,
+          statusText: xhr.statusText,
+        });
+      }
+    };
+  });
 }
-getCategory();
 
+// display categories
+function displayCategory(data) {
+  const response = JSON.parse(data);
+  const selection = response
+    .map((item) => {
+      return `<option value="${item}">${item}</option>`;
+    })
+    .join("");
+  categories.innerHTML += selection;
+}
+
+// display data
+function displayData(data) {
+  const response = JSON.parse(data);
+  // for search method, it returns multiple objects
+  const responseArr = response.result;
+  const value = responseArr
+    ? responseArr[randomNumer(responseArr)].value
+    : response.value;
+  jokeText.textContent = value;
+}
 // shaking main image when clicked
 function shakeImage() {
   jokeImage.classList.add("shake-img");
