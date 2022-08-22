@@ -11,7 +11,7 @@ const form = document.querySelector(".form-joke");
 // listeners -------------
 
 // form
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   shakeImage();
   const categoryValue = categories.value;
@@ -24,11 +24,13 @@ form.addEventListener("submit", (e) => {
     const urlByKeyword = `https://api.chucknorris.io/jokes/search?query=${searchValue}`;
     url = urlByKeyword;
   }
-
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => displayData(data))
-    .catch((err) => console.log(err));
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    displayData(data);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 // select
@@ -39,12 +41,15 @@ categories.addEventListener("change", () => {
 // functions -------------
 
 // get categories for select
-function getCategory() {
-  const url = "https://api.chucknorris.io/jokes/categories";
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => displayCategory(data))
-    .catch((err) => console.log(err));
+async function getCategory() {
+  try {
+    const url = "https://api.chucknorris.io/jokes/categories";
+    const response = await fetch(url);
+    const data = await response.json();
+    displayCategory(data);
+  } catch (error) {
+    console.log(error);
+  }
 }
 getCategory();
 
