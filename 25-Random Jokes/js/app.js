@@ -25,8 +25,9 @@ form.addEventListener("submit", (e) => {
     url = urlByKeyword;
   }
 
-  getData(url)
-    .then((response) => displayData(response))
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => displayData(data))
     .catch((err) => console.log(err));
 });
 
@@ -37,62 +38,19 @@ categories.addEventListener("change", () => {
 
 // functions -------------
 
-// show categories
-getCategory()
-  .then((response) => {
-    displayCategory(response);
-  })
-  .catch((err) => console.log(err));
-
-// get data
-function getData(url) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-    xhr.send();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState < 4) {
-        return;
-      }
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        resolve(xhr.responseText);
-      } else {
-        reject({
-          status: xhr.status,
-          statusText: xhr.statusText,
-        });
-      }
-    };
-  });
-}
-
 // get categories for select
 function getCategory() {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    const url = "https://api.chucknorris.io/jokes/categories";
-    xhr.open("GET", url);
-    xhr.send();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState < 4) {
-        return;
-      }
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        resolve(xhr.responseText);
-      } else {
-        reject({
-          status: xhr.status,
-          statusText: xhr.statusText,
-        });
-      }
-    };
-  });
+  const url = "https://api.chucknorris.io/jokes/categories";
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => displayCategory(data))
+    .catch((err) => console.log(err));
 }
+getCategory();
 
 // display categories
 function displayCategory(data) {
-  const response = JSON.parse(data);
-  const selection = response
+  const selection = data
     .map((item) => {
       return `<option value="${item}">${item}</option>`;
     })
@@ -102,7 +60,7 @@ function displayCategory(data) {
 
 // display data
 function displayData(data) {
-  const response = JSON.parse(data);
+  const response = data;
   // for search method, it returns multiple objects
   const responseArr = response.result;
   const value = responseArr
