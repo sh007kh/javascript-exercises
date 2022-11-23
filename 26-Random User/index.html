@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random User || Project</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="../fontawesome-free-6.1.1-web/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- navbar -->
+    <navbar class="navbar">
+      <div class="nav-center">
+        <div class="nav-header">
+          <h2 class="nav-title">random users</h2>
+        </div>
+      </div>
+    </navbar>
+    <!-- cards -->
+    <section class="section container">
+      <div class="container-background"></div>
+      <div class="section-center users-center">
+        <div class="card-background"></div>
+        <div class="card">
+          <div class="image-container">
+            <img
+              src="https://randomuser.me/api/portraits/women/9.jpg"
+              alt="user-picture"
+              class="card-image"
+            />
+          </div>
+          <div class="text-container">
+            <p class="card-title">my name is</p>
+            <h3 class="card-value">lorem ipsum</h3>
+          </div>
+          <div class="icon-container">
+            <!-- single icon -->
+            <span class="icon" data-label="name"
+              ><i class="first-icon fa-regular fa-user"></i>
+              <i class="second-icon fa-solid fa-child-reaching"></i>
+            </span>
+            <!-- end of single icon -->
+            <!-- single icon -->
+            <span class="icon" data-label="email"
+              ><i class="first-icon fa-regular fa-envelope"></i
+              ><i class="second-icon fa-regular fa-envelope-open"></i
+            ></span>
+            <!-- end of single icon -->
+            <!-- single icon -->
+            <span class="icon" data-label="age"
+              ><i class="first-icon fa-regular fa-calendar"></i
+              ><i class="second-icon fa-regular fa-calendar-xmark"></i
+            ></span>
+            <!-- end of single icon -->
+            <!-- single icon -->
+            <span class="icon" data-label="address"
+              ><i class="first-icon fa-regular fa-map"></i
+              ><i class="second-icon fa-solid fa-map-location"></i
+            ></span>
+            <!-- end of single icon -->
+            <!-- single icon -->
+            <span class="icon" data-label="phone"
+              ><i class="first-icon fa-solid fa-phone"></i
+              ><i class="second-icon fa-solid fa-phone-volume"></i
+            ></span>
+            <!-- end of single icon -->
+            <!-- single icon -->
+            <span class="icon" data-label="password"
+              ><i class="first-icon fa-solid fa-lock"></i
+              ><i class="second-icon fa-solid fa-unlock-keyhole"></i
+            ></span>
+            <!-- end of single icon -->
+          </div>
+          <button type="button" class="btn btn-submit">generate user</button>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
