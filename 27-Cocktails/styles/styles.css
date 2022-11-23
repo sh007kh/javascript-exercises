@@ -1,0 +1,306 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Code+Pro&display=swap");
+
+/* Genenral Styles */
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* variables */
+:root {
+  --primary-100: hsl(21, 94%, 87%);
+  --primary-200: hsl(21, 80%, 74%);
+  --primary-300: hsl(21, 65%, 59%);
+  --primary-400: hsl(21, 57%, 50%);
+  /* primary/main color */
+  --primary-500: hsl(21, 62%, 45%);
+  --primary-600: hsl(21, 77%, 34%);
+  --primary-700: hsl(21, 81%, 29%);
+  --primary-800: hsl(21, 84%, 25%);
+  --primary-900: hsl(21, 91%, 17%);
+
+  /* grey */
+  --grey-50: #f8fafc;
+  --grey-100: #f1f5f9;
+  --grey-200: #e2e8f0;
+  --grey-300: #cbd5e1;
+  --grey-400: #94a3b8;
+  --grey-500: #64748b;
+  --grey-600: #475569;
+  --grey-700: #334155;
+  --grey-800: #1e293b;
+  --grey-900: #0f172a;
+  /* rest of the colors */
+  --black: #222;
+  --white: #fff;
+  --red-light: #f8d7da;
+  --red-dark: #842029;
+  --green-light: #d1e7dd;
+  --green-dark: #0f5132;
+
+  /* rest of the vars */
+  --backgroundColor: var(--grey-200);
+  --textColor: var(--grey-900);
+  --borderRadius: 0.25rem;
+  --letterSpacing: 1px;
+  --transition: 0.3s ease-in-out all;
+  --max-width: 1120px;
+  --fixed-width: 600px;
+  --fluid-width: 90vw;
+  /* box shadow*/
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --primary-font: "Roboto", BlinkMacSystemFont, "Segoe UI", Oxygen, sans-serif;
+  --secondary-font: "Source Code Pro", Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", monospace;
+}
+
+body {
+  background: var(--backgroundColor);
+  font-family: var(--primary-font);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--textColor);
+}
+p {
+  margin-bottom: 1.5rem;
+  max-width: 40rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  margin-bottom: 1.38rem;
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  line-height: 1.3;
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacing);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 3.052rem;
+}
+
+h2 {
+  font-size: 2.441rem;
+}
+
+h3 {
+  font-size: 1.953rem;
+}
+
+h4 {
+  font-size: 1.563rem;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: var(--black);
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.section {
+  padding: 4rem 0;
+}
+.section-center {
+  width: 85vw;
+  margin: 0 auto;
+  max-width: 1170px;
+}
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 90vw;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+.btn {
+  font-size: 0.75rem;
+  color: var(--white);
+  padding: 0.5rem 5rem;
+  border-radius: var(--borderRadius);
+  border: 0.125rem solid var(--primary-500);
+  background-color: var(--primary-500);
+  font-weight: bold;
+  transition: var(--transition);
+  letter-spacing: var(--spacing);
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: var(--light-shadow);
+}
+.btn:hover {
+  background-color: transparent;
+  color: var(--primary-500);
+  box-shadow: var(--dark-shadow);
+}
+/* 
+==========
+navbar
+==========
+*/
+.navbar {
+  width: 100%;
+  min-height: 5rem;
+}
+.nav-center {
+  background-color: var(--primary-100);
+  display: flex;
+  justify-content: center;
+}
+.nav-title {
+  margin-top: 1rem;
+  color: var(--primary-900);
+  transition: var(--transition);
+}
+.nav-title:hover {
+  color: var(--primary-500);
+  transform: scale(1.02);
+}
+/* 
+==========
+search
+==========
+*/
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+.search-input {
+  flex: 0 0 80%;
+  padding: 0.75rem 0.5rem;
+  margin: 1.5rem 0;
+  border: none;
+  border-radius: var(--borderRadius);
+  font-size: 1.125rem;
+  outline: none;
+}
+.search-input::placeholder {
+  font-family: var(--primary-font);
+  text-transform: capitalize;
+  color: var(--grey-600);
+}
+/* 
+==========
+cocktails 
+==========
+ */
+.cocktails {
+  position: relative;
+}
+.cocktail-center {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  column-gap: 4rem;
+}
+.card {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  margin-bottom: 3rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.card:hover {
+  transform: scale(1.02);
+}
+.card-image {
+  border: 10px solid var(--white);
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 17rem;
+  border-radius: var(--borderRadius);
+}
+.card-title {
+  position: absolute;
+  bottom: -2rem;
+  right: -2rem;
+  padding: 0.5rem 1.25rem;
+  font-weight: 700;
+  background-color: var(--black);
+  color: var(--grey-100);
+  border-radius: var(--borderRadius);
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  background-color: var(--grey-200);
+  object-fit: cover;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.hide-loading {
+  display: none;
+}
+
+/* 
+=========
+single drink
+=========
+*/
+
+.single-card-image {
+  border: 10px solid var(--white);
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  object-fit: cover;
+  height: 17rem;
+  border-radius: var(--borderRadius);
+  margin-bottom: 2rem;
+}
+.single-card-title {
+  padding: 0.5rem 1.25rem;
+  font-weight: 700;
+  border-radius: var(--borderRadius);
+  background-color: var(--grey-500);
+  display: inline-block;
+}
+.single-card-desc {
+  max-width: 500px;
+  color: var(--grey-600);
+}
+.ingredient i {
+  color: var(--primary-500);
+}
+.ingredient-text {
+  font-family: var(--secondary-font);
+}
+@media screen and (min-width: 768px) {
+  .single-card {
+    display: flex;
+    flex-direction: row;
+  }
+  .single-card-image,
+  .single-card-info {
+    margin-right: 2rem;
+    width: 50%;
+    justify-self: center;
+    align-self: center;
+  }
+}
