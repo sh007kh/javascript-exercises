@@ -24,6 +24,7 @@
   --primary-900: hsl(21, 91%, 17%);
 
   /* grey */
+  --grey-50-opacity: #f8fafcb7;
   --grey-50: #f8fafc;
   --grey-100: #f1f5f9;
   --grey-200: #e2e8f0;
@@ -37,7 +38,7 @@
   /* rest of the colors */
   --black: #222;
   --white: #fff;
-  --red-light: #f8d7da;
+  --red-light: #f8afb5;
   --red-dark: #842029;
   --green-light: #d1e7dd;
   --green-dark: #0f5132;
@@ -242,7 +243,7 @@ cocktails
 }
 
 .loading {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -250,7 +251,7 @@ cocktails
   max-height: 100vh;
   background-color: var(--grey-200);
   object-fit: cover;
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -263,6 +264,30 @@ cocktails
 single drink
 =========
 */
+.modal-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85vw;
+  margin: 0 auto;
+  position: relative;
+}
+.show-modal .single-card {
+  display: block;
+}
+.single-card {
+  padding: 1rem 2rem;
+  position: fixed;
+  display: none;
+  width: 80vw;
+  margin: 0 auto;
+  background-color: var(--grey-50-opacity);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  border-radius: var(--borderRadius);
+}
 
 .single-card-image {
   border: 10px solid var(--white);
@@ -272,7 +297,7 @@ single drink
   object-fit: cover;
   height: 17rem;
   border-radius: var(--borderRadius);
-  margin-bottom: 2rem;
+  margin: 3rem auto 2rem auto;
 }
 .single-card-title {
   padding: 0.5rem 1.25rem;
@@ -292,9 +317,10 @@ single drink
   font-family: var(--secondary-font);
 }
 @media screen and (min-width: 768px) {
-  .single-card {
+  .show-modal .single-card {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
   }
   .single-card-image,
   .single-card-info {
@@ -303,4 +329,42 @@ single drink
     justify-self: center;
     align-self: center;
   }
+}
+@media screen and (min-width: 992px) {
+  .single-card {
+    max-width: 992px;
+    margin: 0 auto;
+  }
+}
+/* 
+========
+modal
+========
+*/
+.bg {
+  z-index: 15;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+}
+
+.btn-close {
+  position: absolute;
+  padding: 0;
+  top: 0;
+  right: 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--red-dark);
+  background-color: transparent;
+  border: none;
+  transition: var(--transition);
+}
+.btn-close:hover {
+  color: var(--red-light);
 }
