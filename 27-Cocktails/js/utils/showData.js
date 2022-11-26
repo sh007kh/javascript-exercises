@@ -14,12 +14,12 @@ async function showData(url) {
     cocktailCenter.innerHTML = drinks
       .map((drink) => {
         const { idDrink: id, strDrinkThumb: image, strDrink: name } = drink;
-        return `<a href="./single-drink.html" class="card-link" target="_blank">
+        return `
           <article class="card" data-id="${id}">
             <img src="${image}" alt="${name}" class="card-image" />
             <h2 class="card-title">${name}</h2>
           </article>
-        </a>`;
+        `;
       })
       .join("");
   }

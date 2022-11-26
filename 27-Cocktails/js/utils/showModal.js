@@ -1,16 +1,12 @@
-import getElement from "./utils/getElement.js";
-import processData from "./utils/presentData.js";
-import { hideLoading } from "./utils/toggleLoading.js";
+import processData from "./presentData.js";
+import getElement from "./getElement.js";
+import { hideLoading } from "./toggleLoading.js";
 
 // variables
+const modal = getElement(".modal-center");
 const baseUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
-const cocktailCenter = getElement(".section-center");
-
-// listener
-window.addEventListener("DOMContentLoaded", showDrink);
 
 // function
-// display drink
 async function showDrink() {
   const id = localStorage.getItem("drink");
   const drinkArray = await processData(`${baseUrl}${id}`);
@@ -40,15 +36,27 @@ async function showDrink() {
     })
     .join("");
 
-  cocktailCenter.innerHTML = `<article class="single-card" data-id="${id}">
+  modal.innerHTML = `<article class="single-card" data-id="${id}">
+          <button type="button" class="btn btn-close">
+            <i class="fas fa-times"></i>
+          </button>
           <img src="${image}" alt="${name}" class="single-card-image" />
           <div class="single-card-info">
-          <h2 class="single-card-title">${name}</h2>
-          <p class="single-card-desc">${desc}</p>
-          <ul class="single-card-ingredients">
-          ${ingredient}
-          </ul>
+            <h2 class="single-card-title">${name}</h2>
+            <p class="single-card-desc">${desc}</p>
+            <ul class="single-card-ingredients">
+              ${ingredient}
+            </ul>
           </div>
         </article>`;
+  modal.classList.add("show-modal");
+  modal.classList.add("bg");
   hideLoading();
+  const closeModal = getElement(".btn-close");
+  closeModal.addEventListener("click", (e) => {
+    modal.classList.remove("show-modal");
+    modal.classList.remove("bg");
+  });
 }
+
+export default showDrink;
