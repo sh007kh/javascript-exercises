@@ -18,7 +18,7 @@ Variables
   --clr-primary-3: hsl(205, 72%, 37%);
   --clr-primary-4: hsl(205, 63%, 48%);
   /* primary/main color */
-  --clr-primary-5: #49a6e9;
+  --clr-primary-5: hsl(205, 78%, 60%);
   /* lighter shades of primary color */
   --clr-primary-6: hsl(205, 89%, 70%);
   --clr-primary-7: hsl(205, 90%, 76%);
@@ -79,13 +79,11 @@ ul {
 a {
   text-decoration: none;
 }
-img:not(.person-img, .img-logo) {
-  width: 100%;
+a:visited,
+a:active,
+a:focus {
+  color: var(--clr-primary-3);
 }
-img:not(.img-logo) {
-  display: block;
-}
-
 h1,
 h2,
 h3,
@@ -137,24 +135,6 @@ p {
 }
 /*  global classes */
 
-.btn {
-  text-transform: uppercase;
-  background: transparent;
-  color: var(--clr-black);
-  padding: 0.375rem 0.75rem;
-  letter-spacing: var(--spacing);
-  display: inline-block;
-  transition: var(--transition);
-  font-size: 0.875rem;
-  border: 2px solid var(--clr-black);
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  border-radius: var(--radius);
-}
-.btn:hover {
-  color: var(--clr-white);
-  background: var(--clr-black);
-}
 /* section */
 .section {
   padding: 5rem 0;
@@ -174,66 +154,109 @@ main {
   min-height: 100vh;
   display: grid;
   place-items: center;
+  text-align: center;
 }
-/*
-=============== 
-Slider
-===============
-*/
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  background: var(--clr-white);
+.btn {
+  font-size: 0.75rem;
+  color: var(--clr-primary-5);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+  border: 0.125rem solid var(--clr-primary-5);
+  background-color: var(--clr-grey-10);
+  font-weight: bold;
+  font-family: var(--ff-secondary);
+  transition: var(--transition);
+  cursor: pointer;
+  text-transform: capitalize;
   box-shadow: var(--light-shadow);
-  width: 100%;
 }
-.img-logo {
-  height: 2rem;
+.btn:hover {
+  background-color: var(--clr-primary-5);
+  color: var(--clr-primary-1);
+  box-shadow: var(--dark-shadow);
 }
-.slides {
-  display: grid;
-  place-items: center;
-}
-.slider-container {
-  width: 70vw;
-  margin-bottom: 2rem;
-  position: relative;
-  height: 60vh;
-  border: 5px solid var(--clr-primary-5);
+/* 
+=======
+project
+=======
+ */
+.hero {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  overflow: hidden;
-}
-.slide {
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
-  position: absolute;
-  height: 100%;
+  justify-content: center;
+  align-content: center;
+  height: 20rem;
   width: 100%;
-  top: 0;
-  left: 0;
+  background-color: white;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+.hero-title {
+  margin-left: 1.5rem;
+}
+.hero-text {
+  max-width: 20rem;
+  color: var(--clr-grey-1);
+  font-size: 1rem;
+  text-transform: capitalize;
+  margin-left: 3rem;
+  text-align: left;
+}
+.section-title {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+.underline {
+  width: 5rem;
+  height: 0.25rem;
+  background: var(--clr-primary-5);
+  margin-bottom: 1.25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.project {
+  display: block;
+  background-color: var(--clr-white);
+  border-radius: var(--radius);
+  box-shadow: var(--light-shadow);
+  width: 100%;
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 2rem;
   transition: var(--transition);
+  max-width: var(--fixed-width);
 }
-.slide img {
-  opacity: 0.5;
-  object-fit: cover;
-  height: 100%;
+.project:hover {
+  box-shadow: var(--dark-shadow);
+}
+
+.project-img {
   width: 100%;
+  max-width: 80vw;
+  height: 15rem;
+  object-fit: cover;
 }
-.slide h3 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--clr-white);
-  font-size: 3rem;
+.project-title {
+  font-size: 1rem;
+  margin-top: 1.5rem;
 }
-.slide h4 {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--clr-white);
+.projects-center {
+  display: grid;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
 }
+/* @media screen and (min-width: 768px) {
+  .projects-center {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 992px) {
+  .projects-center {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+} */
